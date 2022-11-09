@@ -21,7 +21,7 @@ class UserLoginRepositoryTests {
 	@Test
 	@DisplayName("This method is responsible to test findById() method when user exists in database")
 	void testFindUserById_userExists() {
-		final String username = "sonia";
+		final String username = "sourav@gmail.com";
 		Optional<UserRegistrationDetails> userOptional = userLoginRepository.findById(username);
 		assertTrue(userOptional.isPresent());
 		assertEquals(username, userOptional.get().getEmailAddress());
