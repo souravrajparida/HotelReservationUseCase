@@ -68,7 +68,7 @@ class AuthorizationControllerTests {
 	@BeforeEach
 	void generateUserCredentials() {
 		// User object
-		validUser = new SecurityUser("sonia", "sonia",
+		validUser = new SecurityUser("sourav@gmail.com", "sourav",
 				Collections.singletonList(new SimpleGrantedAuthority("ADMIN")));
 		invalidUser = new SecurityUser("incorrect", "incorrect",
 				Collections.singletonList(new SimpleGrantedAuthority("USER")));
@@ -80,13 +80,13 @@ class AuthorizationControllerTests {
 	void testLogin_withValidCredentials() throws Exception {
 
 		// Set the user request
-		UserRequest user = new UserRequest("sonia", "sonia");
+		UserRequest user = new UserRequest("sourav@gmail.com", "sourav");
 
 		String token = "";
 
 		// mock certain functionalities to return a valid user and generate the token
 		when(authenticationManager.authenticate(ArgumentMatchers.any()))
-				.thenReturn(new TestingAuthenticationToken("sonia", "sonia", "ADMIN"));
+				.thenReturn(new TestingAuthenticationToken("sourav@gmail.com", "sourav", "ADMIN"));
 		when(jwtUtil.generateToken(ArgumentMatchers.any())).thenReturn(token);
 
 		String json = mapper.writeValueAsString(user);
